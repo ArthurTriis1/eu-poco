@@ -1,0 +1,67 @@
+@import "../../shared/colors";
+
+    *{
+        outline: none;
+    }
+
+    
+    .OutLine{
+        margin: 0  5px 10px 5px;
+        border-radius: 14px;
+    }
+    .OutLine:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    .OutLineStatic{
+        border: 3px solid $terciary;
+    }
+
+    .OutLineClicked{
+        border: 3px solid $primary;
+    }
+    
+    .btStyle{
+        width: 20vw;
+        min-width: 130px;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btStyleStatic{
+        border: 3px solid $primary;
+        background-color: #FFF;
+
+    }
+
+    .btStyleClicked{
+        border: 3px solid #FFF;
+        background-color: $primary;
+    }
+
+    .text{
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .textStatic{
+        color: $primary;
+    }
+    
+    .textClicked{
+        color: #FFF;
+    }
+
+    .popup{
+        max-width: 250px;
+    }
+
+    .popupText{
+        color: $primary;
+        margin: 5px 0px;
+    }

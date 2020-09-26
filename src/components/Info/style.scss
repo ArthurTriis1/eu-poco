@@ -1,0 +1,24 @@
+@import "../../shared/colors";
+
+.infoInline{
+    background-color: $terciary;
+    color: $primary;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px;
+    border-radius: 8px;
+    border: 3px solid $primary;
+}
+
+
+.infoOutline{
+    border: 3px solid $terciary;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.infoInline h4{
+    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+}

@@ -1,0 +1,32 @@
+@import "../../shared/colors";
+
+.TargetIconOut{
+    display: flex;
+    border-radius: 41px; 
+    position: relative;
+    border: 3px solid $terciary;
+    width: fit-content;
+    margin: 5px 10px;
+    cursor: pointer;
+}
+
+.TargetIconOut:hover{
+    opacity: 0.8;
+}
+.TargetIconIn{
+    display: flex;
+    height: 50px;
+    width: 50px;
+    background-color: #FFF;
+    align-items: center;
+    justify-content: center;
+    border-radius: 38px;
+    border: 3px solid $primary;
+}
+
+.TargetIcon{
+    display: flex;
+    font-size: 35px;
+    text-align: center;
+    color: $primary
+}

@@ -1,0 +1,15 @@
+{
+  "short_name": "Preserv",
+  "name": "Preserv",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#7D008B",
+  "background_color": "#7D008B"
+}

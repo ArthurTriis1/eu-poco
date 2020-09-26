@@ -1,0 +1,25 @@
+.containerOptions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.inputsLocal{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    z-index: 1000;
+    align-items: flex-end;
+    justify-content: flex-end;
+    
+}
+

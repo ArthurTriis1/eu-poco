@@ -1,0 +1,32 @@
+@import "../../shared/colors";
+
+.containerFadeModal{
+    position: fixed;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.774);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.modalSquare{
+    box-sizing: border-box;
+    width: 80%;
+    padding: 30px;
+    background-color: $terciary;
+    border-radius: 5px;
+    color: $primary;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+.btClose{
+    margin-top: 20px;
+    font-size: 50px;
+    color: rgb(228, 228, 228);
+}

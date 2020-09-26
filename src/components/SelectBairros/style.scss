@@ -1,0 +1,92 @@
+@import "../../shared/colors";
+
+    .containerBairro{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;     
+    }
+    
+    .OutLineBairros{
+        border: 1px solid $terciary;
+    }
+
+    .OutLineClickedBairros{
+        border: 1px solid $primary;
+        z-index: 1000;
+    }
+    .OutLineBairros:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+    
+    .OutLineClickedBairros:hover{
+        cursor: pointer;
+        opacity: 1;
+    }
+
+    .btStyleBairros{
+        padding: 6px;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 18px;
+        font-size: 15px;
+    }
+    
+    .btStyleStaticBairros{
+        background-color: #FFF;
+        border:2px solid $primary;
+    }
+
+    .btStyleClickedBairros{
+        background-color: $secondary;
+        border: 2px solid $terciary;
+    }
+
+    .textBairros{
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 0px;
+
+    }
+
+    .textStaticBairros{
+        color: $primary;
+    }
+    
+    .textClickedBairros{
+        color: $terciary;
+    }
+
+
+    .listBairros{
+        max-height: 400px;
+        overflow-y: scroll;
+        width: 160px;
+        background-color: #FFF;
+        position: absolute;
+        bottom: 0px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .bairroOptions{
+        text-align: center;
+        color: $secondary;
+        text-transform: uppercase;
+        padding: 5px 5px;
+        margin: 0;
+        font-weight: bold;
+        border-bottom: 3px solid #F9F9F9;
+        font-size: 13px;
+        
+        
+    }
+
+    .bairroOptions:hover{
+        cursor: pointer;
+        opacity: 0.7;
+    }
+

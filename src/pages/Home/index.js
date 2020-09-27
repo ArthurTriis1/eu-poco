@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import logoPreserv from '../../assets/logo.png';
+import logoEuPoco from '../../assets/logo.png';
 import { useHistory } from 'react-router-dom';
 
 
@@ -26,7 +26,7 @@ const Home = () => {
                 <div className="infosContainer">
                     <h1 className="infoTitle">Localize poços outogados próximos a você!</h1>
                 </div>
-                <img src={logoPreserv} alt="Preserv" className="logoPreserv"/>
+                <img src={logoEuPoco} alt="EuPoço" className="logoEupoco"/>
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-var CACHE_NAME = 'Preserv';
+var CACHE_NAME = 'EuPoco';
 var urlsToCache = [
   '/',
   '/completed'

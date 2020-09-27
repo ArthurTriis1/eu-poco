@@ -58,7 +58,7 @@ const About = () => {
                 <button className="returnButtonOut returnButtonAbout"  onClick={() => history.goBack()}>
                     <FiArrowLeft className="returnButtonIn"/>
                 </button>
-                <img src={logo} alt="Preserv" className="logoHeaderAbout"/>
+                <img src={logo} alt="EuPoço" className="logoHeaderAbout"/>
                 <h4 className="infoHeaderPreserv">Localize poços outorgados próximos a você!</h4>
             </header>
             

@@ -2,32 +2,52 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import HeaderDetails from '../../components/HeaderDetails'
 
-import fone from '../../assets/fone.png'
-import address from '../../assets/address.png'
-import name from '../../assets/name.png'
-import interrogation from '../../assets/interrogation.png'
-import service from '../../assets/service.png'
-import time from '../../assets/time.png'
+import { FaMapMarkerAlt, FaWater, FaCodepen } from 'react-icons/fa';
+import { RiFunctionLine } from 'react-icons/ri';
+import { GrDocumentVerified } from 'react-icons/gr';
+import { MdDateRange } from 'react-icons/md';
 
 import './styles.scss'
 
 export default function LocationDetails() {
 
     const location = useLocation();
+
+    const {
+        process,
+        local,
+        county,
+        goal,
+        situation,
+        aquifer,
+        hydrographic,
+        date_perfuration,
+        depth,
+        pve_date,
+        grant_date,
+        flow,
+        expiration_date,
+    } = location.state.marker;
  
     const marker = {
-        ...location.state.marker, 
-        endereço: location.state.marker.bairro+ ", " + location.state.marker["endereço"]
+        local: `Local: ${local} , ${county}`,
+        process: `Processo: ${process}, Situação: ${situation}`,
+        aquifer: `Aquifero: ${aquifer}, Bacia Hidrografica: ${hydrographic}`,
+        dates: `Perfuração: ${date_perfuration}, 
+        PVE: ${pve_date}, Outorga: ${grant_date}, 
+        Validade: ${expiration_date}`,
+        func: "Função: " + goal,
+        caracteristicas: `Profundidade: ${depth} (M), Vazão: ${flow}(M³/DIA)`
     }
     
 
     const infos = [
-        {icon: name , att: "nome_oficial"},
-        {icon: fone, att: "fone"},
-        {icon: address, att: "endereço"},
-        {icon:time, att: "horario"},
-        {icon:service, att: "tipo_servico"},
-        {icon: interrogation, att: "como_usar"}, 
+        {icon: GrDocumentVerified , att: "process"},
+        {icon: RiFunctionLine, att: "func"},
+        {icon: FaMapMarkerAlt, att: "local"},
+        {icon: MdDateRange, att: "dates"},
+        {icon: FaWater, att: "aquifer"},
+        {icon: FaCodepen, att: "caracteristicas"},
     ]
 
     return (
@@ -39,8 +59,8 @@ export default function LocationDetails() {
                     infos.map(info => {
                         if(String(marker[info.att]).length > 0){
                             return (
-                                <div key={String(info.att)} className={"groupInformation"}>
-                                    <img alt="Logo" src={info.icon} className={"caracterLogo"}/>
+                                <div key={String(info.att)} className="groupInformation">
+                                    <info.icon size={32} className="caracterLogo"/>
                                     <p className={"caracterText"}>{marker[info.att]}</p>
                                 </div>
                             )

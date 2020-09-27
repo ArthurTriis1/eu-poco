@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Details.css';
+import './Details.scss';
 
 function Details({ details }) {
     return (
@@ -8,7 +8,6 @@ function Details({ details }) {
             {
                 details.map((detail, index) => (
                     <>
-                        <h4 key={`h4-${index}`}>{detail.label}</h4>
                         <p key={`p-${index}`}>{detail.value}</p>
                     </>
                 ))

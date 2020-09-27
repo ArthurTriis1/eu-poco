@@ -19,9 +19,9 @@ const Home = () => {
                     <div className="btOut">
                         <button onClick={() => {history.push('/about')}} className="btIn">SOBRE</button>
                     </div>
-                    <div className="btOut">
+                    {/* <div className="btOut">
                         <button onClick={() => {history.push('/help')}} className="btIn">AJUDA</button>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="infosContainer">
                     <h1 className="infoTitle">Localize poços outogados próximos a você!</h1>

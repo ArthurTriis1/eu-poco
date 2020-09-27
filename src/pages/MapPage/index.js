@@ -7,13 +7,14 @@ import SelectLayer from '../../components/SelectLayer';
 import SelectBairros from '../../components/SelectBairros';
 import GeolocationButton from '../../components/GeolocationButton';
 import outorgasJSON from '../../shapes/outorgas.json'
-import municipiosJSON from '../../shapes/pe.json'
+import municipiosJSON from '../../shapes/municipios.json'
 import { useHistory } from 'react-router-dom';
 import L from 'leaflet';
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
 import './style.scss'
 import HeaderDetails from '../../components/HeaderDetails';
+import Details from '../../components/Details'
 
 const MapPage = () => {
     
@@ -39,7 +40,10 @@ const MapPage = () => {
     const [bairros, setBairros] = useState([]);
 
     const [ municipios, setMunicipios ] = useState([]);
+    const [ showMunicipios, setShowMunicipios ] = useState(false);
+
     const [ details, setDetails ] = useState([]);
+
     const [layerOutorgas, setLayerOutorgas] = useState([]);
     const [outorgas, setOutorgas] = useState(false)
     //#endregion
@@ -69,7 +73,20 @@ const MapPage = () => {
 
         setLayerOutorgas(outorgasJSON);
 
-        setMunicipios(municipiosJSON)
+        setMunicipios(municipiosJSON.map((municip, index) => {
+            return {
+            type: "Feature",
+            id: index,
+            properties: {
+                type: "municipio",
+                name: municip.nome,
+                pop: municip.populacao,
+                dens: municip.dens_demo,
+                hover: false
+            },
+            geometry: municip.geometry,
+            };
+        }));
     },[]);
 
     useEffect(() => {
@@ -97,7 +114,6 @@ const MapPage = () => {
     }
 
     const saveMapState = () =>{
-
         const state = {
             viewport: {
                 center: mapEl.current.viewport.center,
@@ -109,32 +125,15 @@ const MapPage = () => {
     }
 
 
-    const plotMap = (layer) =>{
-        return (layer.map(marker => (
-            <Marker
-                position={[Number(marker.latitude), Number(marker.longitude)]}
-                key={String(marker._id)}
-                icon={pointerIcon}
-                onClick={() => {
-                    saveMapState();
-                    history.push({ 
-                        pathname: "/details", state: { marker } 
-                    });
-                }}
-                >
-            </Marker>)
-        ))
-    }
-
     const plotMapOutorga = (layer) =>{
         return (
 
             layer
                 .filter(marker =>  !!(Number(marker.latitude) && Number(marker.longitude)))
-                .map(marker => (
+                .map((marker, index) => (
             <Marker
                 position={[Number(marker.latitude), Number(marker.longitude)]}
-                key={String(marker.process)}
+                key={index}
                 icon={pointerIcon}
                 onClick={() => {
                     saveMapState();
@@ -165,10 +164,12 @@ const MapPage = () => {
             <HeaderDetails />
 
             <div className="containerMap" >
+                {
+                    Boolean(details.length) &&
+                    <Details details={details}/>
+                }
                 <section className="containerOptions" >
-                    {/*<SelectLayer name="Preservativos"          call={(data) => {setPreserv(data.show); saveMapState()}}   initialShow={!preserv} />*/}
-                    {/*<SelectLayer name="Teste de DST"            call={(data) => {setTeste(data.show); saveMapState()}} initialShow={!teste}/>*/}
-                    {/*<SelectLayer name="Prevenção de urgência"   call={(data) => {setPrevencao(data.show); saveMapState()}}  initialShow={!prevencao}/>*/}
+                    <SelectLayer name="Municipios"                     call={(data) => {setShowMunicipios(data.show); saveMapState()}}  initialShow={!showMunicipios}/>
                     <SelectLayer name="Localização das Outorgas"       call={(data) => {setOutorgas(data.show); saveMapState()}} initialShow={!outorgas}/>
                 </section>
 
@@ -197,26 +198,24 @@ const MapPage = () => {
                             {plotMapOutorga(layerOutorgas)}
                         </MarkerClusterGroup>
                     }
+
                     {
-                        municipios.map(municipio => (
+                        showMunicipios &&
+                        municipios.map((municipio, index) => (
                             <GeoJSON
-                                key={municipio.id}
+                                key={index}
                                 data={municipio}
-                                // onmouseover={(e) => {
-                                //     setDetails([
-                                //         {
-                                //             label: "Município",
-                                //             value: e.layer.defaultOptions.data.properties.name
-                                //         },
-                                //         {
-                                //             label: "População",
-                                //             value: e.layer.defaultOptions.data.properties.pop
-                                //         }
-                                //     ])
-                                // }}
-                                // onmouseout={() => setDetails([])}
-                                // style={municipiosStyle}
-                                // onEachFeature={hoverChangeStyle}
+                                onmouseover={(e) => {
+                                    setDetails([
+                                        {
+                                            label: "Município",
+                                            value: e.layer.defaultOptions.data.properties.name
+                                        },
+                                    ])
+                                }}
+                                onmouseout={() => setDetails([])}
+                                style={municipiosStyle}
+                                onEachFeature={hoverChangeStyle}
                             />
                         ))
                     }

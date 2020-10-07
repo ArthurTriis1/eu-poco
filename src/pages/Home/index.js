@@ -24,7 +24,7 @@ const Home = () => {
                     </div> */}
                 </div>
                 <div className="infosContainer">
-                    <h1 className="infoTitle">Localize poços outogados próximos a você!</h1>
+                    <h1 className="infoTitle">Localize poços outorgados próximos a você!</h1>
                 </div>
                 <img src={logoEuPoco} alt="EuPoço" className="logoEupoco"/>
             </div>
